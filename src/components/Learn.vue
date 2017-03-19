@@ -1,29 +1,27 @@
 <template>
   <div class="">
     <site-header></site-header>
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <chapter-section v-for="section in sections" class="swiper-slide" :content="section.fields.content"></chapter-section>
-          <div class="swiper-slide end-slide">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-6 col-md-offset-3 content-wrapper">
-                  <button v-on:click="nextChapter" class="btn btn-lrg">Continue</button>
-                  <p>or</p>
-                  <router-link to="/"><button class="btn btn-lrg">Go Home</button></router-link>
-                </div>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <chapter-section v-for="section in sections" class="swiper-slide" :content="section.fields.content"></chapter-section>
+        <div class="swiper-slide end-slide">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 col-md-offset-3 content-wrapper">
+                <button v-on:click="nextChapter" class="btn btn-lrg">Continue</button>
+                <p>or</p>
+                <router-link to="/"><button class="btn btn-lrg">Go Home</button></router-link>
               </div>
             </div>
           </div>
         </div>
-        
-        <!-- If we need navigation buttons -->
-        <div class="footer-nav">
-          <div class="swiper-button-prev swiper-button-white swiper-button-disabled"></div>
-          <div class="status"> {{ currentSectionIndex }} / {{ chapterLength }}</div>
-          <div class="swiper-button-next swiper-button-white"></div>
-        </div>
       </div>
+    </div>
+    <div class="footer-nav">
+      <div class="swiper-button-prev swiper-button-white swiper-button-disabled"></div>
+      <div class="status"> {{ currentSectionIndex }} / {{ chapterLength }}</div>
+      <div class="swiper-button-next swiper-button-white"></div>
+    </div>
   </div>
   
 </template>
