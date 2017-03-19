@@ -1,14 +1,25 @@
 <template>
   <div class="">
-    <site-header :title="chapterTitle"></site-header>
+    <site-header></site-header>
       <div class="swiper-container">
         <div class="swiper-wrapper">
           <chapter-section v-for="section in sections" class="swiper-slide" :content="section.fields.content"></chapter-section>
+          <div class="swiper-slide end-slide">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6 col-md-offset-3 content-wrapper">
+                  <button v-on:click="nextChapter" class="btn btn-lrg">Continue</button>
+                  <p>or</p>
+                  <router-link to="/"><button class="btn btn-lrg">Go Home</button></router-link>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         
         <!-- If we need navigation buttons -->
         <div class="footer-nav">
-          <div class="swiper-button-prev swiper-button-white"></div>
+          <div class="swiper-button-prev swiper-button-white swiper-button-disabled"></div>
           <div class="status"> {{ currentSectionIndex }} / {{ chapterLength }}</div>
           <div class="swiper-button-next swiper-button-white"></div>
         </div>
@@ -26,13 +37,12 @@ import contentfulAPI from '../services/contentful'
 import Swiper from 'swiper'
 
 let swiper
-let swiperInitFlag = false
 
 export default {
   name: 'learn',
   data () {
     return {
-      chapterTitle: 'What Can Loved Ones Do?',
+      chapterTitle: '',
       chapterLength: '',
       currentSectionIndex: '1',
       sections: []
@@ -44,15 +54,9 @@ export default {
     this.fetchData()
   },
   updated () {
-    // to-do: not sure if this is the cleanest
-    // lifecyle hook...basically I need to wait for
-    // the contentful api call to return and the
-    // swiper slides to be in the dom, I'm pretty sure
-    // that this is called when those slides get created
-    this.initializeSwiper()
   },
   destroyed () {
-    swiperInitFlag = false
+    console.log('destroyed!!')
   },
   watch: {
     '$route': 'fetchData'
@@ -68,7 +72,17 @@ export default {
           let chapter = response.items[0].fields
           this.chapterTitle = chapter.title
           this.sections = chapter.sections
-          this.chapterLength = chapter.sections.length + ''
+          // adding one for our end slide
+          this.chapterLength = chapter.sections.length + 1 + ''
+          console.log('data is back!')
+          // I don't love this, but basically I need to wait until the DOM
+          // has been updated with the data above, and because to my knowledge
+          // the only lifecycle hook that gets called is 'update' if we're on
+          // the second chapter this seems better than having it called every time
+          // there is an update
+          setTimeout(() => {
+            this.initializeSwiper()
+          }, 50)
         })
         .catch((error) => {
           console.log('error occurred')
@@ -76,9 +90,6 @@ export default {
         })
     },
     initializeSwiper () {
-      if (swiperInitFlag) {
-        return
-      }
       console.log('intializing swiper')
       swiper = new Swiper('.swiper-container', {
         // Optional parameters
@@ -86,25 +97,21 @@ export default {
         // Navigation arrows
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev',
-        onReachEnd: this.endOfChapter,
         onSlideChangeStart: (swiper) => {
           this.currentSectionIndex = (swiper.activeIndex + 1) + ''
         }
       })
-      // this is stupid but eslint won't let me assign swiper without
-      // using it...not sure what to do here
-      swiper
 
-      swiperInitFlag = true
+      this.currentSectionIndex = '1'
     },
-    endOfChapter () {
+    nextChapter () {
       console.log('you have reached the end of this chapter!!')
       const route = this.$route
       const currentChapterId = parseInt(route.params.chapterId)
       const nextChapterId = (currentChapterId + 1) + ''
-      if (nextChapterId < 3) {
-        // this.$router.push({ name: route.name, params: {chapterId: nextChapterId} })
-      }
+      // clean up current swiper
+      swiper.destroy(true, true)
+      this.$router.push({ name: route.name, params: {chapterId: nextChapterId} })
     }
   }
 }
