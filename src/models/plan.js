@@ -1,4 +1,4 @@
-const book = [
+const plan = [
   {
     'id': '1',
     'title': 'Emotional Changes',
@@ -25,4 +25,4 @@ const book = [
   }
 ]
 
-export default book
+export default plan
