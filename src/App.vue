@@ -25,4 +25,11 @@ iframe {
   width: 100% !important;
   max-width: 560px;
 }
+
+#app .btn-primary {
+	background-color: #CBCE00;
+	border-color: #CBCE00;
+	text-transform: uppercase;
+	font-weight: bold;
+}
 </style>
