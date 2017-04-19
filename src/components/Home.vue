@@ -3,9 +3,10 @@
     <site-header></site-header>
     <div class="container-fluid">
       <div class="row hero-bg">
-        <div class="col-sm-12 col-md-4 col-md-offset-4">
-          <h1>Managing Motherhood</h1>
-          <p>Welcome! This program is designed to help families feel more prepared to manage the emotional adjustments of pregnancy and parenting.</p>
+        <div class="scrim"></div>
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+          <h1>Welcome to Bringing Light to Motherhood!</h1>
+          <p>This tool has been designed to help you (and your family) feel more prepared to adjust to the demands joys and stressors of pregnancy and parenting.</p>
         </div>
       </div>
       <div class="row nav-buttons-wrapper">
@@ -48,6 +49,22 @@ export default {
   background-size: cover;
   min-height: 300px;
   color: white !important;
+  position: relative;
+}
+.hero-bg h1 {
+  font-size: 30px;
+  margin-top: 50px;
+}
+.hero-bg p {
+  color: white;
+  font-size: 20px;
+}
+
+.scrim {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
 }
 
 .nav-buttons-wrapper {

@@ -1,7 +1,7 @@
 <template>
   <div class="footer container-fluid">
     <div class="row">
-      <div class="footer-block col-xs-12 col-sm-4">
+      <div class="footer-block col-xs-12 col-sm-4 col-sm-offset-3">
         <h3>Help is Available</h3>
         <div>
           <p>In Los Angeles County, visit the <a target="_blank" href="http://directory.maternalmentalhealthnow.org/">Maternal Mental Health Resource Directory</a>.&nbsp; Outside of Los Angeles County, visit <a href="http://www.postpartum.net">Postpartum Support International</a> or call 1-800-944-4773.</p></div>

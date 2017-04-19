@@ -12,7 +12,7 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Lato', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -32,4 +32,5 @@ iframe {
 	text-transform: uppercase;
 	font-weight: bold;
 }
+
 </style>

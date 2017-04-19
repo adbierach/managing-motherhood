@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <div class="row">
-        <div class="col-md-6 col-md-offset-3 content-wrapper" v-html="compiledMarkdown">
+        <div class="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3 content-wrapper" v-html="compiledMarkdown">
           
         </div>
       </div>
@@ -30,13 +30,36 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
   .content-wrapper {
     height: 100%;
     overflow-y: auto;
+    padding: 5% 0 50px;
   }
 
   .container, .row {
     height: 100%;
   }
+  .content-wrapper h3 {
+    margin-bottom: 20px
+  }
+
+  .content-wrapper p {
+    font-size: 18px;
+    line-height: 22px;
+    margin: 20px 0;
+  }
+
+  .content-wrapper ul {
+    margin-top: 30px;
+    margin-left: 20px;
+  }
+
+  .content-wrapper li {
+    list-style-type: disc;
+    font-size: 16px;
+    color: #686868;
+    margin: 8px 0;
+  } 
+
 </style>
