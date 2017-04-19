@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from 'components/Home'
 import LearnLanding from 'components/LearnLanding'
 import Learn from 'components/Learn'
+import PracticeLanding from 'components/PracticeLanding'
 import PlanLanding from 'components/PlanLanding'
 import PlanBuild from 'components/PlanBuild'
 
@@ -24,6 +25,11 @@ export default new Router({
       path: '/learn/:chapterId',
       name: 'Learn',
       component: Learn
+    },
+    {
+      path: '/practice',
+      name: 'PracticeLanding',
+      component: PracticeLanding
     },
     {
       path: '/plan',

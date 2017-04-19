@@ -108,7 +108,6 @@ export default {
           window.localStorage.setItem('plan', JSON.stringify(this.carePlan))
         }
       })
-      window.meswipes = swiper
       this.currentSectionIndex = '1'
     },
     nextChapter () {
