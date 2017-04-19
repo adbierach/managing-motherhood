@@ -29,14 +29,9 @@ export default {
   data () {
     return {
       chapters: [
-      {title: 'Emotional Changes', id: '1'},
-      {title: 'What is Stress?', id: '2'},
-      {title: 'Problem Solving', id: '3'},
-      {title: 'Sleep', id: '4'},
-      {title: 'Stress or Depression', id: '5'},
-      {title: 'Getting Help', id: '6'},
-      {title: 'What Can Loved Ones Do?', id: '7'},
-      {title: 'Review', id: '8'}
+      {title: 'Being Pregnant', id: '1'},
+      {title: 'Life with Baby', id: '2'},
+      {title: 'Coping with Stress', id: '3'}
       ]
     }
   },
