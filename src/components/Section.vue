@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="content-container">
     <div class="container">
       <div class="row">
-        <div class="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3 content-wrapper" v-html="compiledMarkdown">
+        <div class="col-xs-12 col-md-6 col-md-offset-3 content-wrapper" v-html="compiledMarkdown">
           
         </div>
       </div>
@@ -32,9 +32,13 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
   .content-wrapper {
+    padding: 3% 0 40px;
+  }
+
+  .content-container {
     height: 100%;
+    width: 100%;
     overflow-y: auto;
-    padding: 5% 0 50px;
   }
 
   .container, .row {

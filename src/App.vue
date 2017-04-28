@@ -21,6 +21,10 @@ html, body, #app, #app > div {
 	height: 100%;
 }
 
+body {
+	-webkit-overflow-scrolling: touch;
+}
+
 iframe {
   width: 100% !important;
   max-width: 560px;

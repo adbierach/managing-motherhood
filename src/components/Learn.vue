@@ -7,7 +7,7 @@
         <div class="swiper-slide end-slide">
           <div class="container">
             <div class="row">
-              <div class="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3 content-wrapper">
+              <div class="col-xs-12 col-md-6 col-md-offset-3 content-wrapper">
                 <button v-on:click="nextChapter" class="btn btn-lrg">Continue</button>
                 <p>or</p>
                 <router-link to="/"><button class="btn btn-lrg">Go Home</button></router-link>
