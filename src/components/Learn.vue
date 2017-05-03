@@ -3,33 +3,13 @@
     <site-header :title="chapterTitle"></site-header>
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide start-slide">
-          <div class="container">
-            <div class="row">
-              <div class="col-xs-12 col-md-6 col-md-offset-3 content-wrapper">
-                  <h1>{{ this.chapterTitle }}
-              </div>
-            </div>
-          </div>
-        </div>
         <chapter-section v-for="section in sections" class="swiper-slide" :content="section.fields.content"></chapter-section>
-        <div class="swiper-slide end-slide">
-          <div class="container">
-            <div class="row">
-              <div class="col-xs-12 col-md-6 col-md-offset-3 content-wrapper">
-                <button v-on:click="nextChapter" class="btn btn-lrg">Continue</button>
-                <p>or</p>
-                <router-link to="/"><button class="btn btn-lrg">Go Home</button></router-link>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
     <div class="footer-nav">
-      <div class="swiper-button-prev swiper-button-white swiper-button-disabled"></div>
+      <div v-on:click="prevSlide" class="swiper-button-prev swiper-button-white"></div>
       <div class="status"> {{ currentSectionIndex }} / {{ chapterLength }}</div>
-      <div class="swiper-button-next swiper-button-white"></div>
+      <div v-on:click="nextSlide" class="swiper-button-next swiper-button-white"></div>
     </div>
   </div>
   
@@ -43,6 +23,7 @@ import contentfulAPI from '../services/contentful'
 
 import Swiper from 'swiper'
 
+// make swiper instance globally available
 let swiper
 
 export default {
@@ -59,6 +40,7 @@ export default {
   },
   created () {
     this.fetchData()
+    console.log('created!!')
   },
   updated () {
   },
@@ -79,8 +61,7 @@ export default {
           let chapter = response.items[0].fields
           this.chapterTitle = chapter.title
           this.sections = chapter.sections
-          // adding one for our start slide and one for end slide
-          this.chapterLength = chapter.sections.length + 2 + ''
+          this.chapterLength = chapter.sections.length + ''
           console.log('data is back!')
           // I don't love this, but basically I need to wait until the DOM
           // has been updated with the data above, and because to my knowledge
@@ -88,6 +69,11 @@ export default {
           // the second chapter this seems better than having it called every time
           // there is an update
           setTimeout(() => {
+            // Clear out swiper if there is one
+            if (swiper) {
+              swiper.destroy(true, true)
+            }
+            // Initialize swiper with returned data
             this.initializeSwiper()
           }, 50)
         })
@@ -100,10 +86,13 @@ export default {
       console.log('intializing swiper')
       swiper = new Swiper('.swiper-container', {
         // Optional parameters
-        direction: 'horizontal',
+        // direction: 'horizontal',
+        direction: 'vertical',
         // Navigation arrows
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
+        onlyExternal: true,
+        keyboardControl: true,
+        // nextButton: '.swiper-button-next',
+        // prevButton: '.swiper-button-prev',
         onSlideChangeStart: (swiper) => {
           this.currentSectionIndex = (swiper.activeIndex + 1) + ''
         }
@@ -111,14 +100,37 @@ export default {
 
       this.currentSectionIndex = '1'
     },
+    nextSlide () {
+      if (swiper.isEnd) {
+        this.nextChapter()
+      } else {
+        swiper.slideNext()
+      }
+    },
+    prevSlide () {
+      if (swiper.isBeginning) {
+        this.prevChapter()
+      } else {
+        swiper.slidePrev()
+      }
+    },
     nextChapter () {
       console.log('you have reached the end of this chapter!!')
       const route = this.$route
       const currentChapterId = parseInt(route.params.chapterId)
       const nextChapterId = (currentChapterId + 1) + ''
-      // clean up current swiper
-      swiper.destroy(true, true)
       this.$router.push({ name: route.name, params: {chapterId: nextChapterId} })
+    },
+    prevChapter () {
+      const route = this.$route
+      const currentChapterId = parseInt(route.params.chapterId)
+      const prevChapterId = (currentChapterId - 1) + ''
+      // Route home if we're on first chapter
+      if (prevChapterId === '0') {
+        this.$router.push({ name: 'Home' })
+      } else {
+        this.$router.push({ name: route.name, params: {chapterId: prevChapterId} })
+      }
     }
   }
 }

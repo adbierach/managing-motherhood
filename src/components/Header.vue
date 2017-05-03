@@ -130,11 +130,20 @@ h3 {
 
 .title {
   position: absolute;
-  top: 50%;
+  top: 10px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   color: white;
   font-size: 20px;
+  text-align: center;
+  width: 286px;
+}
+
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 17px;
+    top: 13px;
+  }
 }
 
 </style>
