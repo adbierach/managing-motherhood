@@ -1,8 +1,17 @@
 <template>
   <div class="">
-    <site-header></site-header>
+    <site-header :title="chapterTitle"></site-header>
     <div class="swiper-container">
       <div class="swiper-wrapper">
+        <div class="swiper-slide start-slide">
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-12 col-md-6 col-md-offset-3 content-wrapper">
+                  <h1>{{ this.chapterTitle }}
+              </div>
+            </div>
+          </div>
+        </div>
         <chapter-section v-for="section in sections" class="swiper-slide" :content="section.fields.content"></chapter-section>
         <div class="swiper-slide end-slide">
           <div class="container">
@@ -70,8 +79,8 @@ export default {
           let chapter = response.items[0].fields
           this.chapterTitle = chapter.title
           this.sections = chapter.sections
-          // adding one for our end slide
-          this.chapterLength = chapter.sections.length + 1 + ''
+          // adding one for our start slide and one for end slide
+          this.chapterLength = chapter.sections.length + 2 + ''
           console.log('data is back!')
           // I don't love this, but basically I need to wait until the DOM
           // has been updated with the data above, and because to my knowledge

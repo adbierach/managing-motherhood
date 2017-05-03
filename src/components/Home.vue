@@ -7,16 +7,12 @@
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
           <h1>Welcome to Bringing Light to Motherhood!</h1>
           <p>This tool has been designed to help you (and your family) feel more prepared to adjust to the demands joys and stressors of pregnancy and parenting.</p>
+          <router-link :to="'/learn/1'" class="btn btn-primary btn-lg" role="button">Get Started</router-link>
         </div>
       </div>
       <div class="row nav-buttons-wrapper">
         <section class="col-xs-12">
-          <router-link to="/learn" class="btn btn-primary btn-lg">Learn</router-link>
-        </section>
-        <section class="col-xs-12">
-          <router-link to="/practice" class="btn btn-primary btn-lg">Practice</router-link>
-        </section>
-        <section class="col-xs-12">
+          <h1>Build your Care Plan</h1>
           <router-link to="/plan" class="btn btn-primary btn-lg">Plan</router-link>
         </section>
       </div>
@@ -33,7 +29,6 @@ export default {
   name: 'home',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
     }
   },
   components: {'site-header': Header, 'site-footer': Footer}
@@ -69,6 +64,10 @@ export default {
 
 .nav-buttons-wrapper {
   padding: 50px 0;
+}
+
+.list-group {
+  margin-top: 50px;
 }
 
 section {

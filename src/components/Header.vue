@@ -9,14 +9,23 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <router-link to="/"><img class="logo" src="../assets/logo.png"></router-link>
+      <!-- If we're on a learn page, display chapter title in header -->
+      <div v-if="title" class="title">{{ title }}</div>
+      <router-link v-else to="/"><img class="logo" src="../assets/logo.png"></router-link>
+
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><router-link to="/learn">Learn</router-link></li>
-        <li><router-link to="/practice">Practice</router-link></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Learn <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <router-link class="list-group-item" v-for="chapter in chapters" :to="{path: '/learn/'+chapter.id}">
+             {{ chapter.title }}
+            </router-link>
+          </ul>
+        </li>
         <li><router-link to="/plan">Plan</router-link></li>
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -29,7 +38,21 @@
 
 <script>
   export default {
-    props: ['title']
+    props: ['title'],
+    data () {
+      return {
+        chapters: [
+        {title: 'Being Pregnant', id: '1'},
+        {title: 'Life with Baby', id: '2'},
+        {title: 'Coping with Stress', id: '3'},
+        {title: 'Managing Stress', id: '4'},
+        {title: 'Getting Sleep', id: '5'},
+        {title: 'Knowing When to Get Help', id: '6'},
+        {title: 'How Can Your Loved Ones Help?', id: '7'},
+        {title: 'Review', id: '8'}
+        ]
+      }
+    }
   }
 </script>
 
@@ -88,6 +111,30 @@ h3 {
 .navbar .nav li a:hover, .navbar .nav li a:focus {
   color: white;
   font-weight: bold;
+}
+
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:focus,
+.navbar-default .navbar-nav>.open>a:hover {
+  background-color: #372F2D;
+}
+
+.dropdown-menu {
+  background-color: #372F2D;
+  min-width: 320px;
+}
+
+.list-group-item {
+  background-color: #372F2D;
+}
+
+.title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 20px;
 }
 
 </style>
