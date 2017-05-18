@@ -17,8 +17,10 @@
           <div class="container">
             <div class="row">
               <div v-if="question.type === 'textarea'" class="col-md-6 col-md-offset-3 content-wrapper">
-                  <h3>{{ question.prompt }}</h3>
-                  <textarea v-bind:placeholder="question.placeholder" v-model="question.value"></textarea>
+                <h3>{{ question.prompt }}</h3>
+                <div class="form-group">
+                  <textarea v-bind:placeholder="question.placeholder" v-model="question.value" class="textarea"></textarea>
+                </div>
               </div>
               <div v-if="question.type === 'checkbox'" class="col-md-6 col-md-offset-3 content-wrapper">
                   <h3>{{ question.prompt }}</h3>
@@ -36,9 +38,8 @@
           <div class="container">
             <div class="row">
               <div class="col-md-6 col-md-offset-3 content-wrapper">
-                <button v-on:click="nextChapter" class="btn btn-lrg">Continue</button>
-                <p>or</p>
                 <router-link to="/"><button class="btn btn-lrg">Go Home</button></router-link>
+                <button v-on:click="sendEmail">SEND EMAIL</button>
               </div>
             </div>
           </div>
@@ -47,7 +48,7 @@
     </div>
     <div class="footer-nav">
       <div class="swiper-button-prev swiper-button-white swiper-button-disabled"></div>
-      <div class="status"> {{ currentSectionIndex }} / {{ chapterLength }}</div>
+      <div class="status"> {{ currentSectionIndex }} / {{ surveyLength }}</div>
       <div class="swiper-button-next swiper-button-white"></div>
     </div>
   </div>
@@ -62,6 +63,8 @@ import Swiper from 'swiper'
 
 import carePlan from '../services/plan'
 
+import utils from '../services/utils'
+
 let swiper
 
 export default {
@@ -69,7 +72,7 @@ export default {
   data () {
     return {
       chapterTitle: '',
-      chapterLength: '',
+      surveyLength: carePlan.length + 2,
       currentSectionIndex: '1',
       sections: [],
       carePlan: carePlan
@@ -118,6 +121,20 @@ export default {
       // clean up current swiper
       swiper.destroy(true, true)
       this.$router.push({ name: route.name, params: {chapterId: nextChapterId} })
+    },
+    sendEmail () {
+      console.log('testing button')
+
+      let email = 'alexdbierach@gmail.com'
+      let carePlan = {'text': 'cheese', 'text2': 'salami'}
+
+      utils.sendEmail(email, carePlan)
+      .then((res) => {
+        console.log(res)
+        // if (res.data.status === 'ok') {
+        //   console.log('successful!!')
+        // }
+      })
     }
   }
 }
@@ -162,4 +179,10 @@ export default {
     padding: 17px;
     border-radius: 4px;
 }  
+
+
+.textarea {
+  width: 100%;
+  min-height: 100px;
+}
 </style>

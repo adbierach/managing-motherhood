@@ -18,16 +18,17 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navbar-collapse">
       <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Learn <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <router-link class="list-group-item" v-for="chapter in chapters" :to="{path: '/learn/'+chapter.id}">
-             {{ chapter.title }}
-            </router-link>
+        <!-- <li v-if="title"><router-link to="/"><img class="logo-title" src="../assets/logo.png"></router-link></li> -->
+        <li><router-link to="/" class="nav-item">Home</router-link></li>
+        <li><router-link to="/" class="nav-item">Learn</router-link></li>
+          <li><ul class="subnav">
+            <li v-for="chapter in chapters"><router-link class="subnav-item" :to="{path: '/learn/'+chapter.id}">
+              {{ chapter.title }}
+              </router-link>
+            </li>
           </ul>
-        </li>
-        <li><router-link to="/plan">Plan</router-link></li>
-      </ul>
+        <li><router-link to="/plan" class="nav-item">Plan</router-link></li>
+      </ul></li>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
@@ -57,6 +58,52 @@
 </script>
 
 <style scoped>
+
+.subnav {
+  margin-left: 30px;
+}
+
+.subnav-item, .subnav-item:hover {
+  text-decoration: none;
+}
+
+.nav-item {
+  text-transform: uppercase;
+}
+
+/*make navbar always collapsed*/
+
+    .navbar-header {
+        float: none;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+
+    .navbar-collapse.collapse.in{
+    display: block!important;
+}
+    .navbar-nav {
+        float: none!important;
+        margin: 7.5px -15px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+/*-----------------*/
+
+
 #header {
   background-color: #372F2D;
   border: none;
@@ -99,6 +146,10 @@
   width: 130px;
 }
 
+.logo-title {
+
+}
+
 h3 {
   color: white;
 }
@@ -108,7 +159,8 @@ h3 {
   font-size: 20px;
 
 }
-.navbar .nav li a:hover, .navbar .nav li a:focus {
+.navbar .nav li a:hover,
+.navbar .nav li a:focus {
   color: white;
   font-weight: bold;
 }

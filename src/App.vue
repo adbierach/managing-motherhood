@@ -6,7 +6,15 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  watch: {
+    '$route': 'resetScroll'
+  },
+  methods: {
+    resetScroll () {
+      window.scroll(0, 0)
+    }
+  }
 }
 </script>
 
