@@ -43,6 +43,7 @@
     data () {
       return {
         chapters: [
+        {title: 'Introduction', id: '0'},
         {title: 'Being Pregnant', id: '1'},
         {title: 'Life with Baby', id: '2'},
         {title: 'Coping with Stress', id: '3'},

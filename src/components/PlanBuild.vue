@@ -39,7 +39,7 @@
             <div class="row">
               <div class="col-md-6 col-md-offset-3 content-wrapper">
                 <router-link to="/"><button class="btn btn-lrg">Go Home</button></router-link>
-                <button v-on:click="sendEmail">SEND EMAIL</button>
+                <!-- <button v-on:click="sendEmail">SEND EMAIL</button> -->
               </div>
             </div>
           </div>
@@ -63,7 +63,7 @@ import Swiper from 'swiper'
 
 import carePlan from '../services/plan'
 
-import utils from '../services/utils'
+// import utils from '../services/utils'
 
 let swiper
 
@@ -102,7 +102,7 @@ export default {
       console.log('intializing swiper')
       swiper = new Swiper('.swiper-container', {
         // Optional parameters
-        direction: 'horizontal',
+        direction: 'vertical',
         // Navigation arrows
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev',
@@ -121,26 +121,27 @@ export default {
       // clean up current swiper
       swiper.destroy(true, true)
       this.$router.push({ name: route.name, params: {chapterId: nextChapterId} })
-    },
-    sendEmail () {
-      console.log('testing button')
-
-      let email = 'alexdbierach@gmail.com'
-      let carePlan = {'text': 'cheese', 'text2': 'salami'}
-
-      utils.sendEmail(email, carePlan)
-      .then((res) => {
-        console.log(res)
-        // if (res.data.status === 'ok') {
-        //   console.log('successful!!')
-        // }
-      })
     }
+    // sendEmail () {
+    //   console.log('testing button')
+
+    //   let email = 'alexdbierach@gmail.com'
+    //   let carePlan = {'text': 'cheese', 'text2': 'salami'}
+
+    //   utils.sendEmail(email, carePlan)
+    //   .then((res) => {
+    //     console.log(res)
+    //     // if (res.data.status === 'ok') {
+    //     //   console.log('successful!!')
+    //     // }
+    //   })
+    // }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
+<!-- I probably don't need to scope this, it's also a repeat of what is in learn -->
 <style scoped> 
 .swiper-container {
     width: 100%;
@@ -178,6 +179,7 @@ export default {
     background-color: #CBCE00;
     padding: 17px;
     border-radius: 4px;
+    transform: rotate(90deg);
 }  
 
 

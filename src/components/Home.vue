@@ -1,21 +1,19 @@
 <template>
   <div>
     <site-header></site-header>
-    <div class="container-fluid">
-      <div class="row hero-bg">
-        <div class="scrim"></div>
-        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-          <h1>Welcome to Bringing Light to Motherhood!</h1>
-          <p>This tool has been designed to help you (and your family) feel more prepared to adjust to the demands joys and stressors of pregnancy and parenting.</p>
-          <router-link :to="'/learn/1'" class="btn btn-primary btn-lg" role="button">Get Started</router-link>
-        </div>
-      </div>
-      <div class="row nav-buttons-wrapper">
+    <div class="hero-bg">
+      <div class="scrim"></div>
+      <div class="cta-box">
+        <h1>Welcome to Bringing Light to Motherhood!</h1>
+        <!-- <p>This tool has been designed to help you (and your family) feel more prepared to adjust to the demands joys and stressors of pregnancy and parenting.</p> -->
+        <router-link :to="'/learn/0'" class="btn btn-primary btn-lg" role="button">Get Started</router-link>
+    </div>
+<!--       <div class="row nav-buttons-wrapper">
         <section class="col-xs-12">
           <h1>Build your Care Plan</h1>
           <router-link to="/plan" class="btn btn-primary btn-lg">Plan</router-link>
         </section>
-      </div>
+      </div> -->
     </div>
     <site-footer></site-footer>
   </div>
@@ -46,13 +44,32 @@ export default {
   color: white !important;
   position: relative;
 }
-.hero-bg h1 {
-  font-size: 30px;
-  margin-top: 50px;
+
+.cta-box {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 80%;
 }
-.hero-bg p {
+.cta-box h1 {
+  font-size: 30px;
+  margin-bottom: 50px;
+}
+.cta-box p {
   color: white;
   font-size: 20px;
+}
+
+.cta-box a {
+  font-size: 24px;
+}
+
+.hero-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .scrim {
@@ -66,9 +83,6 @@ export default {
   padding: 50px 0;
 }
 
-.list-group {
-  margin-top: 50px;
-}
 
 section {
   padding: 3% 0;
@@ -83,6 +97,12 @@ section .btn {
 h2 {
   margin-bottom: 15px;
   font-size: 35px;
+}
+
+.footer {
+  position: absolute;
+  width: 100%;
+  top: 100%;
 }
 
 </style>

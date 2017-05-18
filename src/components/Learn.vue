@@ -119,14 +119,19 @@ export default {
       const route = this.$route
       const currentChapterId = parseInt(route.params.chapterId)
       const nextChapterId = (currentChapterId + 1) + ''
-      this.$router.push({ name: route.name, params: {chapterId: nextChapterId} })
+
+      if (nextChapterId === '8') {
+        this.$router.push({ name: 'PlanBuild' })
+      } else {
+        this.$router.push({ name: route.name, params: {chapterId: nextChapterId} })
+      }
     },
     prevChapter () {
       const route = this.$route
       const currentChapterId = parseInt(route.params.chapterId)
       const prevChapterId = (currentChapterId - 1) + ''
       // Route home if we're on first chapter
-      if (prevChapterId === '0') {
+      if (prevChapterId === '-1') {
         this.$router.push({ name: 'Home' })
       } else {
         this.$router.push({ name: route.name, params: {chapterId: prevChapterId} })
@@ -174,5 +179,6 @@ export default {
     background-color: #CBCE00;
     padding: 17px;
     border-radius: 4px;
+    transform: rotate(90deg);
 }  
 </style>
