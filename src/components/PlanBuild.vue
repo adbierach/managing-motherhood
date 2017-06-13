@@ -28,7 +28,7 @@
                     <label>
                       <input type="checkbox" id="checkbox" v-model="option.checked"> {{ option.text }}
                     </label>
-                    <input v-if="option.checked" v-model="option.data">
+                    <input v-if="option.checked && option.hasOwnProperty('data')" v-model="option.data">
                   </div>
               </div>
             </div>
@@ -103,6 +103,8 @@ export default {
       swiper = new Swiper('.swiper-container', {
         // Optional parameters
         direction: 'vertical',
+        onlyExternal: true,
+        keyboardControl: true,
         // Navigation arrows
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev',
@@ -150,7 +152,7 @@ export default {
 
 .footer-nav {
   width: 100%;
-  height: 50px;
+  height: 70px;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -168,9 +170,9 @@ export default {
 } 
 
 .swiper-button-prev, .swiper-button-next {
-    width: 27px;
-    height: 25px;
-    margin-top: -16px;
+    width: 50px;
+    height: 50px;
+    margin-top: -23px;
 
     -moz-background-size: 27px 25px;
     -webkit-background-size: 27px 25px;

@@ -64,6 +64,10 @@ export default {
     font-size: 16px;
     color: #686868;
     margin: 8px 0;
+  }
+
+  h4 {
+    font-style: italic;
   } 
 
 </style>

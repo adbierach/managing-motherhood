@@ -1,0 +1,26 @@
+[
+  {
+    "type": "checkbox",
+    "prompt": "Signs that I am experiencing stress:",
+    "description": "Check all that apply",
+    "options": [{"text":"Headaches","checked":false},{"text":"Difficulty sleeping","checked":false},{"text":"Upset stomach or nausea","checked":false},{"text":"Stiff neck or tension","checked":false},{"text":"Heart palpitations","checked":false},{"text":"Low energy","checked":false},{"text":"Avoiding others","checked":false},{"text":"Becoming irritable","checked":false},{"text":"Often hearing others comment \"you aren’t yourself\"","checked":false},{"text":"Unable to \"turn off\" worries","checked":false},{"text":"Difficulty concentrating","checked":false},{"text":"Not eating enough, or eating too much","checked":false},{"text":"Lack of appetite","checked":false},{"text":"Feeling constantly overwhelmed","checked":false},{"text":"Crying easily","checked":false},{"text":"Quick to anger","checked":false},{"text":"Difficulty relaxing","checked":false},{"text":"Not enjoying things I used to enjoy","checked":false},{"text":"Negative thinking","checked":false},{"text":"Other","checked":false,"data":""}]
+  },
+  {
+    "type": "checkbox",
+    "prompt": "Soothing Activities Checklist",
+    "description": "Check all that apply",
+    "options": [{"text":"Singing","checked":false},{"text":"Reading a book","checked":false},{"text":"Watching a movie","checked":false},{"text":"Gardening or planting a seed","checked":false},{"text":"Turning on music and dancing","checked":false},{"text":"Asking or accepting help from others","checked":false},{"text":"Praying","checked":false},{"text":"Meditating","checked":false},{"text":"Writing in a journal","checked":false},{"text":"Hanging out with a friend","checked":false},{"text":"Going for a walk","checked":false},{"text":"Resting when your baby rests","checked":false},{"text":"Preparing and eating tasty and nutritious food","checked":false},{"text":"Moving","checked":false},{"text":"Exercising","checked":false},{"text":"Deep Breathing","checked":false},{"text":"Calling a friend","checked":false},{"text":"Talking through the way you are feeling with someone who listens well","checked":false},{"text":"Doing something nice for someone","checked":false},{"text":"Make a cup of tea","checked":false},{"text":"Taking a bath","checked":false},{"text":"Knitting","checked":false},{"text":"Doing crafts","checked":false},{"text":"Other","checked":false,"data":""}]
+  },
+  {
+    "type": "checkbox",
+    "prompt": "My Circle of Support",
+    "description": "Who I can turn to for:",
+    "options": [{"text":"Talking about my feelings:","checked":false,"data":""},{"text":"Help with babysitting:","checked":false,"data":""},{"text":"Bringing a meal or a snack:","checked":false,"data":""},{"text":"Immediate support, like a phone call:","checked":false,"data":""}]
+  },
+  {
+    "type": "checkbox",
+    "prompt": "Mindfulness Exercises That Help Me Relax And Be More Present",
+    "description": "Check all that you are interested in",
+    "options": [{"text":"Tuning Into Your 5 Senses","checked":false},{"text":"Mindful Moments","checked":false},{"text":"Breath Meditation","checked":false},{"text":"Calming Breath","checked":false},{"text":"Identifying Automatic Negative Thoughts and Turning Them Around","checked":false},{"text":"Using H.A.L.T. (Hungry Angry Lonely or Tired)","checked":false},{"text":"Affirmations","checked":false}]
+  }
+]

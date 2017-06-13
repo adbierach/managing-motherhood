@@ -88,9 +88,9 @@ export default {
         // Optional parameters
         // direction: 'horizontal',
         direction: 'vertical',
-        // Navigation arrows
         onlyExternal: true,
         keyboardControl: true,
+        // Navigation arrows
         // nextButton: '.swiper-button-next',
         // prevButton: '.swiper-button-prev',
         onSlideChangeStart: (swiper) => {
@@ -150,7 +150,7 @@ export default {
 
 .footer-nav {
   width: 100%;
-  height: 50px;
+  height: 70px;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -168,9 +168,9 @@ export default {
 } 
 
 .swiper-button-prev, .swiper-button-next {
-    width: 27px;
-    height: 25px;
-    margin-top: -16px;
+    width: 50px;
+    height: 50px;
+    margin-top: -23px;
 
     -moz-background-size: 27px 25px;
     -webkit-background-size: 27px 25px;
@@ -180,5 +180,6 @@ export default {
     padding: 17px;
     border-radius: 4px;
     transform: rotate(90deg);
-}  
+} 
+
 </style>
