@@ -6,6 +6,7 @@ import Learn from 'components/Learn'
 import PracticeLanding from 'components/PracticeLanding'
 import PlanLanding from 'components/PlanLanding'
 import PlanBuild from 'components/PlanBuild'
+import PlanView from 'components/PlanView'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/plan/build',
       name: 'PlanBuild',
       component: PlanBuild
+    },
+    {
+      path: '/plan/view',
+      name: 'PlanView',
+      component: PlanView
     }
   ]
 })

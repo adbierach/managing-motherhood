@@ -22,5 +22,11 @@
     "prompt": "Mindfulness Exercises That Help Me Relax And Be More Present",
     "description": "Check all that you are interested in",
     "options": [{"text":"Tuning Into Your 5 Senses","checked":false},{"text":"Mindful Moments","checked":false},{"text":"Breath Meditation","checked":false},{"text":"Calming Breath","checked":false},{"text":"Identifying Automatic Negative Thoughts and Turning Them Around","checked":false},{"text":"Using H.A.L.T. (Hungry Angry Lonely or Tired)","checked":false},{"text":"Affirmations","checked":false}]
+  },
+  {
+    "type": "checkbox",
+    "prompt": "Depression and anxiety symptom checklist to bring to your healthcare provider",
+    "description": "Check all that apply",
+    "options": [{"text":"Feeling tired for no good reason","checked":false},{"text":"Feeling irritable or angry","checked":false},{"text":"Feeling nervous","checked":false},{"text":"Feeling guilty, ashamed or hopeless","checked":false},{"text":"Feeling so nervous that nothing can calm me down","checked":false},{"text":"Feeling hopeless","checked":false},{"text":"Feeling restless","checked":false},{"text":"Feeling like everything is an effort","checked":false},{"text":"Feeling so sad that nothing can cheer me up","checked":false},{"text":"Feeling worthless","checked":false},{"text":"Big changes in appetite – eating more or less than usual","checked":false},{"text":"Difficulties concentrating","checked":false},{"text":"Feeling like things that I used to enjoy are no longer interesting","checked":false},{"text":"Feeling unable to look forward to anything","checked":false},{"text":"Wanting to blame myself when things go wrong","checked":false},{"text":"Feeling scared or panicky for no good reason","checked":false},{"text":"Feeling so overwhelmed it made me hopeless","checked":false},{"text":"Being unable to sleep even when my baby is sleeping","checked":false},{"text":"Crying almost all the time, or not feeling able to stop crying","checked":false},{"text":"Had thoughts of harming myself or my baby","checked":false}]
   }
 ]
