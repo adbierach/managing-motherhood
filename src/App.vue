@@ -36,6 +36,7 @@ body {
 iframe {
   width: 100% !important;
   max-width: 560px;
+  height: 330px;
 }
 
 #app .btn-primary {

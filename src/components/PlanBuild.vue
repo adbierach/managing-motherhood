@@ -3,42 +3,39 @@
     <site-header></site-header>
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide start-slide">
+        <div class="content-container swiper-slide start-slide">
           <div class="container">
             <div class="row">
               <div class="col-md-6 col-md-offset-3 content-wrapper">
-                <p>It’s helpful to have a plan in place to help when you are feeling overwhelmed, upset, depressed, anxious or just stressed. Fill in this list so that you can create your own care plan.</p>
+                <h1>Care Plan</h1>
+                <p>This form will help you create a list of your personal self-help strategies. When you have filled out the sections, a personal care plan will be created for you. You will also have the option of emailing it to yourself so you can either print it out or keep it on your phone or computer.</p>
               </div>
             </div>
           </div>
         </div>
 <!--         <chapter-section v-for="section in sections" class="swiper-slide" :content="section.fields.content"></chapter-section> -->
-        <div v-for="question in carePlan" class="swiper-slide">
+        <div v-for="question in carePlan" class="content-container swiper-slide">
           <div class="container">
             <div class="row">
-              <div v-if="question.type === 'textarea'" class="col-md-6 col-md-offset-3 content-wrapper">
-                <h3>{{ question.prompt }}</h3>
-                <div class="form-group">
-                  <textarea v-bind:placeholder="question.placeholder" v-model="question.value" class="textarea"></textarea>
-                </div>
-              </div>
-              <div v-if="question.type === 'checkbox'" class="col-md-6 col-md-offset-3 content-wrapper">
+              <div v-if="question.type === 'checkbox'" class="col-md-6 col-md-offset-3 content-wrapper form-group">
                   <h3>{{ question.prompt }}</h3>
+                  <p>{{ question.description }}</p>
                   <div v-for="option in question.options" class="checkbox">
                     <label>
-                      <input type="checkbox" id="checkbox" v-model="option.checked"> {{ option.text }}
+                      <input type="checkbox" v-model="option.checked"> {{ option.text }}
                     </label>
-                    <input v-if="option.checked && option.hasOwnProperty('data')" v-model="option.data">
+                    <textarea v-if="option.checked && option.hasOwnProperty('data')" v-model="option.data" class="checkbox-input"></textarea>
                   </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="swiper-slide end-slide">
+        <div class="content-container swiper-slide end-slide">
           <div class="container">
             <div class="row">
-              <div class="col-md-6 col-md-offset-3 content-wrapper">
-                <router-link to="/"><button class="btn btn-lrg">Go Home</button></router-link>
+              <div class="col-md-6 col-md-offset-3 content-wrapper align-center">
+                <h3>You're all set!</h3>
+                <router-link :to="'/plan/view'" class="btn btn-primary btn-lg" role="button">View Plan</router-link>
                 <!-- <button v-on:click="sendEmail">SEND EMAIL</button> -->
               </div>
             </div>
@@ -185,8 +182,21 @@ export default {
 }  
 
 
-.textarea {
+/*.textarea {
   width: 100%;
   min-height: 100px;
+}*/
+
+.checkbox-input {
+  display: block;
+  width: 100%;
+  min-height: 80px;
+  border: 1px solid #333333;
+  margin: 10px 0;
 }
+
+.align-center {
+  text-align: center;
+}
+
 </style>

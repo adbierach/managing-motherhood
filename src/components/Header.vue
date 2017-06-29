@@ -18,17 +18,14 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navbar-collapse">
       <ul class="nav navbar-nav">
-        <!-- <li v-if="title"><router-link to="/"><img class="logo-title" src="../assets/logo.png"></router-link></li> -->
-        <li><router-link to="/" class="nav-item">Home</router-link></li>
-        <li><router-link to="/" class="nav-item">Learn</router-link></li>
-          <li><ul class="subnav">
-            <li v-for="chapter in chapters"><router-link class="subnav-item" :to="{path: '/learn/'+chapter.id}">
-              {{ chapter.title }}
-              </router-link>
-            </li>
-          </ul>
-        <li><router-link to="/plan" class="nav-item">Plan</router-link></li>
-      </ul></li>
+        <li v-if="title"><router-link to="/" class="logo-wrapper"><img class="logo-title" src="../assets/logo.png"></router-link></li>
+        <!-- <li><router-link to="/" class="nav-item">Home</router-link></li> -->
+        <li v-for="chapter in chapters"><router-link class="nav-item" :to="{path: '/learn/'+chapter.id}">
+            {{ chapter.title }}
+            </router-link>
+        </li>
+        <li><router-link to="/plan" class="nav-item">Care Plan</router-link></li>
+      </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
@@ -60,16 +57,9 @@
 
 <style scoped>
 
-.subnav {
-  margin-left: 30px;
-}
 
-.subnav-item, .subnav-item:hover {
+.nav-item, .nav-item:hover {
   text-decoration: none;
-}
-
-.nav-item {
-  text-transform: uppercase;
 }
 
 /*make navbar always collapsed*/
@@ -139,6 +129,11 @@
   background-color: #CBCE00;
 }
 
+.logo-wrapper {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 .logo {
   position: absolute;
   left: 50%;
@@ -157,7 +152,9 @@ h3 {
 
 .navbar .nav li a {
   color: white;
-  font-size: 20px;
+  font-size: 18px;
+  padding-top: 3px;
+  padding-bottom: 3px;
 
 }
 .navbar .nav li a:hover,

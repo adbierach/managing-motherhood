@@ -1,14 +1,13 @@
 <template>
   <div class="">
     <site-header></site-header>
-    <div class="jumbotron">
-      <h1>Plan</h1>
-      <p>Build or view your care plane here!</p>
-      <router-link :to="'/plan/build'" class="btn btn-primary btn-lg" role="button">Get Started</router-link>
-    </div>
     <div class="container">
       <div class="row">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-6 col-md-offset-3 content-wrapper">
+          <h1>Care Plan</h1>
+          <p>It’s helpful to have a plan in place to help when you are feeling overwhelmed, upset, depressed, anxious or just stressed.</p>
+          <router-link :to="'/plan/build'" class="btn btn-primary btn-lg" role="button">Create Plan</router-link>
+          <router-link v-if="carePlanExists" :to="'/plan/view'" class="btn btn-primary btn-lg" role="button">View Plan</router-link>
         </div>
       </div>
     </div>
@@ -25,6 +24,7 @@ export default {
   name: 'planlanding',
   data () {
     return {
+      carePlanExists: !!window.localStorage.getItem('plan')
     }
   },
   components: {'site-header': Header, 'site-footer': Footer}
@@ -33,5 +33,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.container {
+  height: calc(100% - 50px);
+  padding-top: 50px;
+}
 </style>

@@ -48,22 +48,32 @@ export default {
     margin-bottom: 20px
   }
 
+  .content-wrapper h4 {
+    border-bottom: 2px solid;
+    font-size: 22px;
+    padding-bottom: 15px;
+  }
+
   .content-wrapper p {
-    font-size: 18px;
-    line-height: 22px;
+    font-size: 17px;
+    line-height: 24px;
     margin: 20px 0;
   }
 
   .content-wrapper ul {
     margin-top: 30px;
-    margin-left: 20px;
+    margin-left: 0px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 20px;
+    padding-left: 30px;
   }
 
   .content-wrapper li {
     list-style-type: disc;
-    font-size: 16px;
+    font-size: 17px;
     color: #686868;
-    margin: 8px 0;
+    margin: 16px 0;
   }
 
   h4 {
