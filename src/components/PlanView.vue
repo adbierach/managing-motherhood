@@ -5,7 +5,12 @@
       <div class="row">
         <div class="col-md-6 col-md-offset-3 content-wrapper">
           <h1>My Care Plan</h1>
-
+          <p>If you would like your care plan sent to you, enter your email here:</p>
+          <div class="send-email-wrapper input-group">
+            <input type="text" class="form-control" placeholder="Email address" v-model="userEmail">
+            <button class="btn btn-primary btn-lg" v-on:click="sendEmail">SEND EMAIL</button>
+            <div v-if="emailSuccessfullySent">Your care plan has been sent!</div>
+          </div>
           <div v-for="question in newCarePlan" class="block">
             <h3>{{ question.prompt }}</h3>
             <ul>
@@ -44,12 +49,15 @@ import Header from './Header'
 import Footer from './Footer'
 
 import carePlan from '../services/plan'
+import utils from '../services/utils'
 
 export default {
   name: 'planview',
   data () {
     return {
-      carePlan: carePlan
+      carePlan: carePlan,
+      userEmail: '',
+      emailSuccessfullySent: false
     }
   },
   computed: {
@@ -83,20 +91,33 @@ export default {
   components: {'site-header': Header, 'site-footer': Footer},
   methods: {
 
-    // sendEmail () {
-    //   console.log('testing button')
+    sendEmail () {
+      console.log('testing button')
 
-    //   let email = 'alexdbierach@gmail.com'
-    //   let carePlan = {'text': 'cheese', 'text2': 'salami'}
+      let email = this.userEmail
 
-    //   utils.sendEmail(email, carePlan)
-    //   .then((res) => {
-    //     console.log(res)
-    //     // if (res.data.status === 'ok') {
-    //     //   console.log('successful!!')
-    //     // }
-    //   })
-    // }
+      let newPlan = this.carePlan.map((item) => {
+        return {
+          type: item.type,
+          prompt: item.prompt,
+          description: item.description,
+          // filter for checked items
+          options: item.options.filter((option) => {
+            return option.checked
+          })
+        }
+      })
+      newPlan = JSON.stringify(newPlan)
+
+      utils.sendEmail(email, newPlan)
+      .then((res) => {
+        console.log(res)
+        if (res.status === 200) {
+          console.log('successful!!')
+          this.emailSuccessfullySent = true
+        }
+      })
+    }
   }
 }
 </script>

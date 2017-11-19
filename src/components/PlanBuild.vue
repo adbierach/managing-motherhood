@@ -17,15 +17,37 @@
         <div v-for="question in carePlan" class="content-container swiper-slide">
           <div class="container">
             <div class="row">
+
               <div v-if="question.type === 'checkbox'" class="col-md-6 col-md-offset-3 content-wrapper form-group">
-                  <h3>{{ question.prompt }}</h3>
-                  <p>{{ question.description }}</p>
-                  <div v-for="option in question.options" class="checkbox">
-                    <label>
-                      <input type="checkbox" v-model="option.checked"> {{ option.text }}
-                    </label>
-                    <textarea v-if="option.checked && option.hasOwnProperty('data')" v-model="option.data" class="checkbox-input"></textarea>
-                  </div>
+                <h3>{{ question.prompt }}</h3>
+                <p>{{ question.description }}</p>
+                <div v-for="option in question.options" class="checkbox">
+                  <label>
+                    <input type="checkbox" v-model="option.checked"> {{ option.text }}
+                  </label>
+                </div>
+              </div>
+
+              <div v-if="question.type === 'checkboxWithTextarea'" class="col-md-6 col-md-offset-3 content-wrapper form-group">
+                <h3>{{ question.prompt }}</h3>
+                <p>{{ question.description }}</p>
+                <div v-for="option in question.options" class="checkbox">
+                  <label>
+                    <input type="checkbox" v-model="option.checked"> {{ option.text }}
+                  </label>
+                  <textarea v-if="option.checked" v-model="option.data" class="checkbox-input"></textarea>
+                </div>
+              </div>
+            
+              <div v-if="question.type === 'checkboxWithContent'" class="col-md-6 col-md-offset-3 content-wrapper form-group">
+                <h3>{{ question.prompt }}</h3>
+                <p>{{ question.description }}</p>
+                <div v-for="option in question.options" class="checkbox">
+                  <label>
+                    <input type="checkbox" v-model="option.checked"> {{ option.text }}
+                  </label>
+                  <div v-if="option.checked" class="checkbox-input">{{ option.data }}</div>
+                </div>
               </div>
             </div>
           </div>
@@ -36,7 +58,6 @@
               <div class="col-md-6 col-md-offset-3 content-wrapper align-center">
                 <h3>You're all set!</h3>
                 <router-link :to="'/plan/view'" class="btn btn-primary btn-lg" role="button">View Plan</router-link>
-                <!-- <button v-on:click="sendEmail">SEND EMAIL</button> -->
               </div>
             </div>
           </div>
@@ -59,8 +80,6 @@ import Section from './Section'
 import Swiper from 'swiper'
 
 import carePlan from '../services/plan'
-
-// import utils from '../services/utils'
 
 let swiper
 
@@ -121,20 +140,6 @@ export default {
       swiper.destroy(true, true)
       this.$router.push({ name: route.name, params: {chapterId: nextChapterId} })
     }
-    // sendEmail () {
-    //   console.log('testing button')
-
-    //   let email = 'alexdbierach@gmail.com'
-    //   let carePlan = {'text': 'cheese', 'text2': 'salami'}
-
-    //   utils.sendEmail(email, carePlan)
-    //   .then((res) => {
-    //     console.log(res)
-    //     // if (res.data.status === 'ok') {
-    //     //   console.log('successful!!')
-    //     // }
-    //   })
-    // }
   }
 }
 </script>

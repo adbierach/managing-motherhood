@@ -35,6 +35,12 @@ export default {
     padding: 3% 0 40px;
   }
 
+  .content-wrapper img {
+    width: 95%;
+    max-width: 500px;
+    margin: 25px auto;
+  }
+
   .content-container {
     height: 100%;
     width: 100%;
