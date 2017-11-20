@@ -7,9 +7,10 @@
           <h1>My Care Plan</h1>
           <p>If you would like your care plan sent to you, enter your email here:</p>
           <div class="send-email-wrapper input-group">
-            <input type="text" class="form-control" placeholder="Email address" v-model="userEmail">
-            <button class="btn btn-primary btn-lg" v-on:click="sendEmail">SEND EMAIL</button>
+            <input type="email" class="form-control" placeholder="Email address" v-model="userEmail">
+            <button class="btn btn-primary btn-lg" v-on:click="sendEmail">SEND</button>
             <div v-if="emailSuccessfullySent">Your care plan has been sent!</div>
+            <div v-if="inValidEmail">Oops, looks like that isn't a valid email address</div>
           </div>
           <div v-for="question in newCarePlan" class="block">
             <h3>{{ question.prompt }}</h3>
@@ -57,7 +58,8 @@ export default {
     return {
       carePlan: carePlan,
       userEmail: '',
-      emailSuccessfullySent: false
+      emailSuccessfullySent: false,
+      inValidEmail: false
     }
   },
   computed: {
@@ -83,18 +85,21 @@ export default {
   updated () {
   },
   destroyed () {
-    console.log('destroyed!!')
   },
   watch: {
     '$route': 'fetchData'
   },
   components: {'site-header': Header, 'site-footer': Footer},
   methods: {
-
     sendEmail () {
-      console.log('testing button')
-
       let email = this.userEmail
+
+      if (!email.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+        this.inValidEmail = true
+        return
+      } else {
+        this.inValidEmail = false
+      }
 
       let newPlan = this.carePlan.map((item) => {
         return {
@@ -113,7 +118,6 @@ export default {
       .then((res) => {
         console.log(res)
         if (res.status === 200) {
-          console.log('successful!!')
           this.emailSuccessfullySent = true
         }
       })
@@ -133,4 +137,8 @@ export default {
   .block li:last-child {
     display: none;
   }
+  .send-email-wrapper .btn {
+    margin: 10px 0;
+  }
+
 </style>

@@ -115,7 +115,6 @@ export default {
       }, 50)
     },
     initializeSwiper () {
-      console.log('intializing swiper')
       swiper = new Swiper('.swiper-container', {
         // Optional parameters
         direction: 'vertical',
@@ -132,7 +131,6 @@ export default {
       this.currentSectionIndex = '1'
     },
     nextChapter () {
-      console.log('you have reached the end of this chapter!!')
       const route = this.$route
       const currentChapterId = parseInt(route.params.chapterId)
       const nextChapterId = (currentChapterId + 1) + ''

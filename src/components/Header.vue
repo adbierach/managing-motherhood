@@ -20,7 +20,7 @@
       <ul class="nav navbar-nav">
         <li v-if="title"><router-link to="/" class="logo-wrapper"><img class="logo-title" src="../assets/logo.png"></router-link></li>
         <!-- <li><router-link to="/" class="nav-item">Home</router-link></li> -->
-        <li v-for="chapter in chapters"><router-link class="nav-item" :to="{path: '/learn/'+chapter.id}">
+        <li v-for="chapter in chapters"><router-link class="nav-item" data-toggle="collapse" data-target="#navbar-collapse" :to="{path: '/learn/'+chapter.id}">
             {{ chapter.title }}
             </router-link>
         </li>
@@ -47,8 +47,7 @@
         {title: 'Managing Stress', id: '4'},
         {title: 'Getting Sleep', id: '5'},
         {title: 'Knowing When to Get Help', id: '6'},
-        {title: 'How Can Your Loved Ones Help?', id: '7'},
-        {title: 'Review', id: '8'}
+        {title: 'How Can Your Loved Ones Help?', id: '7'}
         ]
       }
     }

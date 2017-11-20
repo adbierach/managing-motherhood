@@ -6,6 +6,7 @@
         <chapter-section v-for="section in sections" class="swiper-slide" :content="section.fields.content"></chapter-section>
       </div>
     </div>
+    <div v-if="isLoading" class="loader-wrapper"><div class="swiper-lazy-preloader"></div></div>
     <div class="footer-nav">
       <div v-on:click="prevSlide" class="swiper-button-prev swiper-button-white"></div>
       <div class="status"> {{ currentSectionIndex }} / {{ chapterLength }}</div>
@@ -33,19 +34,18 @@ export default {
       chapterTitle: '',
       chapterLength: '',
       currentSectionIndex: '1',
-      sections: []
+      sections: [],
+      isLoading: true
     }
   },
   computed: {
   },
   created () {
     this.fetchData()
-    console.log('created!!')
   },
   updated () {
   },
   destroyed () {
-    console.log('destroyed!!')
   },
   watch: {
     '$route': 'fetchData'
@@ -53,6 +53,8 @@ export default {
   components: {'site-header': Header, 'chapter-section': Section},
   methods: {
     fetchData () {
+      this.isLoading = true
+
       contentfulAPI.getEntries({
         'fields.chapterId': this.$route.params.chapterId,
         'content_type': 'chapter'
@@ -62,7 +64,8 @@ export default {
           this.chapterTitle = chapter.title
           this.sections = chapter.sections
           this.chapterLength = chapter.sections.length + ''
-          console.log('data is back!')
+          this.isLoading = false
+
           // I don't love this, but basically I need to wait until the DOM
           // has been updated with the data above, and because to my knowledge
           // the only lifecycle hook that gets called is 'update' if we're on
@@ -83,7 +86,6 @@ export default {
         })
     },
     initializeSwiper () {
-      console.log('intializing swiper')
       swiper = new Swiper('.swiper-container', {
         // Optional parameters
         // direction: 'horizontal',
@@ -115,7 +117,6 @@ export default {
       }
     },
     nextChapter () {
-      console.log('you have reached the end of this chapter!!')
       const route = this.$route
       const currentChapterId = parseInt(route.params.chapterId)
       const nextChapterId = (currentChapterId + 1) + ''
@@ -143,6 +144,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped> 
+
+.loader-wrapper {
+    width: 100%;
+    height: calc(100% - 50px);
+    position: absolute;
+    top: 50px;
+    z-index: 1;
+}
 .swiper-container {
     width: 100%;
     height: calc(100% - 100px);

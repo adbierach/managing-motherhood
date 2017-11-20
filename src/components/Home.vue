@@ -4,8 +4,8 @@
     <div class="hero-bg">
       <div class="scrim"></div>
       <div class="cta-box">
-        <h1>Welcome to Bringing Light to Motherhood!</h1>
-        <!-- <p>This tool has been designed to help you (and your family) feel more prepared to adjust to the demands joys and stressors of pregnancy and parenting.</p> -->
+        <h1>WELCOME TO</h1>
+        <h2>Bringing Light to Motherhood!</h2>
         <router-link :to="'/learn/0'" class="btn btn-primary btn-lg" role="button">Get Started</router-link>
     </div>
 <!--       <div class="row nav-buttons-wrapper">
@@ -54,8 +54,16 @@ export default {
   width: 80%;
 }
 .cta-box h1 {
+  font-size: 20px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+.cta-box h2 {
   font-size: 30px;
   margin-bottom: 50px;
+  margin-top: 5px;
+  text-align: center;
+  font-weight: bold;
 }
 .cta-box p {
   color: white;
@@ -64,6 +72,11 @@ export default {
 
 .cta-box a {
   font-size: 24px;
+}
+
+#app .cta-box .btn {
+  background-color: #c51e5f;
+  border-color: #c51e5f;
 }
 
 .hero-bg {
@@ -76,7 +89,7 @@ export default {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0,0,0,0.2);
 }
 
 .nav-buttons-wrapper {
@@ -84,16 +97,6 @@ export default {
 }
 
 
-section {
-  padding: 3% 0;
-  text-align: center;
-}
-
-section .btn {
-  width: 200px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
 h2 {
   margin-bottom: 15px;
   font-size: 35px;
